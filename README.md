@@ -1,1 +1,1 @@
-# mini-project-react-app
+# react-app
