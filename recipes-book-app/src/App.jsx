@@ -12,15 +12,15 @@ export default function App() {
       <Navbar />
       <Sidebar />
 
-      <Router>
-        <Route path="" element={<HomePage />} />
+      {/* <Router> */}
+        {/* <Route path="" element={<HomePage />} />
         <Route path="" element={<AboutPage />} />
         <Route path="" element={<DashboardPage />} />
         <Route path="" element={<ItemDetailsPage />} />
-        <Route path="" element={<NotFoundPage />} />
+        <Route path="" element={<NotFoundPage />} /> */}
 
         <List />
-      </Router>
+     {/*  </Router> */}
 
       <Footer />
 

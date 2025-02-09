@@ -1,14 +1,17 @@
 import React from 'react';
+import recipesLogo from "../assets/libro.png";
 
 export default function Navbar() {
     return (
       <nav>
         <div className="navbar-logo">
-          <img src="/path/to/logo.png" alt="App Logo" />
+          <img src={recipesLogo} alt="App Logo" />
         </div>
         <div className="navbar-title">
-          <h1>Recipe</h1>
+          <h1>Recipes</h1>
         </div>
       </nav>
     );
   }
+
+  
