@@ -11,27 +11,16 @@ import recipesData from "../recipesData.json";
 
 export default function App() {
   const [recipes, setRecipes] = useState(recipesData);
-
-/*   const [selectedRecipe, setSelectedRecipe] = useState(null); */
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   //Función para agregar recetas
   const handleAddRecipe = (newRecipe) => {
-    setRecipes([...recipes, newRecipe]);
+    setRecipes([...recipes, newRecipe]); // ¿¿Usamos el estado previo 'prevRecipes' para no mutar directamente el estado de recipes?? @ Carlos
   };
-
-//
-const handleDeleteRecipe = (id) => {
-  setRecipes(recipes.filter(recipe => recipe.id !== id));
-};
-
-  // Función para actualizar recetas
-  const handleUpdateRecipe = (updatedRecipe) => {
-    const updatedRecipes = recipes.map(recipe =>
-      recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-    );
-
-    setRecipes(updatedRecipes);
-    setSelectedRecipe(null);
+  
+  // Función para borrar receta/item
+  const handleDeleteRecipe = (id) => {
+    setRecipes(recipes.filter(recipe => recipe.id !== id));
   };
 
   // Función para seleccionar receta que queremos actualizar/editar
@@ -39,15 +28,25 @@ const handleDeleteRecipe = (id) => {
     setSelectedRecipe(recipe); // Establecemos la receta seleccionada
   };
 
+  // Función para actualizar recetas
+  const handleUpdateRecipe = (updatedRecipe) => {
+    setRecipes(recipes.map(recipe => recipe.id === updatedRecipe.id ? updatedRecipe : recipe));
+    setSelectedRecipe(null);  // Después de actualizar, limpiamos la selección
+  };
+
   return (
-    <>
+    <div className="app-container">
       <Navbar />
       <Sidebar />
 
       <AddRecipeForm onAddRecipe={handleAddRecipe} />
-      
-      {/* <UpdateRecipeForm recipe={selectedRecipe} />
- */}
+
+      {selectedRecipe && (
+      <UpdateRecipeForm 
+      currentRecipe={selectedRecipe} 
+      updateRecipe={handleUpdateRecipe} 
+    />)}
+
       {/* <Router> */}
       {/* <Route path="" element={<HomePage />} />
         <Route path="" element={<AboutPage />} />
@@ -60,6 +59,6 @@ const handleDeleteRecipe = (id) => {
 
       <Footer />
 
-    </>
+      </div>
   )
 }

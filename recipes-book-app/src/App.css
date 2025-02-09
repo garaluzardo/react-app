@@ -1,15 +1,56 @@
-* {
-  background-color: rgb(129, 58, 58);
+.app-container {
+  width: 100vw;
+  background-color: blueviolet; 
+}
+
+.list{
+  background-color: rgb(211, 211, 72);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  border: solid, 7px;
+  border-color: black;
 }
 
 .recipe-container{
-background-color: rgb(234, 234, 124) ;  
+background-color: lightcoral;  
 }
 
 .recipe-container img{
   width: 20%;
   height: auto;
   border-radius: 25%;
-  background-color: rgb(100, 207, 100);
-
+  background-color: rgb(255, 255, 255);
 }
+
+.footer {
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.sidebar{
+  background-color: lightgreen;
+}
+
+.add-form {
+  background-color: lightslategray;
+}
+
+.navbar {
+  background-color: rgb(203, 206, 184);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navbar img {
+  width: 50px;
+}
+
+.footer img {
+  width: 100px;
+}
+

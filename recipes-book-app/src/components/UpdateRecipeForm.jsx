@@ -1,15 +1,14 @@
 import { useState } from "react";
 import React from "react";
 import '../App.css';
-import recipesData from "../../recipesData.json"
 
 export default function UpdateRecipeForm({ currentRecipe, updateRecipe }) {
 
     // Estados para los campos del formulario con valores por defecto si la receta existe
-    const [name, setName] = useState(currentRecipe ? currentRecipe.name : "");
-    const [calories, setCalories] = useState(currentRecipe ? currentRecipe.calories : 0);
-    const [image, setImage] = useState(currentRecipe ? currentRecipe.image : "");
-    const [servings, setServings] = useState(currentRecipe ? currentRecipe.servings : 1);
+    const [name, setName] = useState(currentRecipe.name);
+    const [calories, setCalories] = useState(currentRecipe.calories);
+    const [image, setImage] = useState(currentRecipe.image);
+    const [servings, setServings] = useState(currentRecipe.servings);
 
     // Manejamos la actualización del formulario
     const handleUpdate = e => {
@@ -29,7 +28,7 @@ export default function UpdateRecipeForm({ currentRecipe, updateRecipe }) {
     };
 
     return (
-        <div>
+        <div className="update-form">
         <form onSubmit={handleUpdate}>
             <span>Update Recipe</span>
             <div>

@@ -4,7 +4,7 @@ import '../App.css';
 
 export default function Navbar() {
     return (
-      <nav>
+      <nav className="navbar">
         <div className="navbar-logo">
           <img src={recipesLogo} alt="App Logo" />
         </div>

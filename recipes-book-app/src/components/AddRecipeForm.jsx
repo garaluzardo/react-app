@@ -37,7 +37,7 @@ export default function AddRecipeForm({onAddRecipe}) {
     };
 
     return (
-        <div>
+        <div className="add-form">
             <form onSubmit={handleAddRecipe}>
                 <span>New Recipe</span>
                 <div>
