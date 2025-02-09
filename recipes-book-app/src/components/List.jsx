@@ -1,19 +1,16 @@
 import React, {useState} from 'react';
 import ListItem from './ListItem';
 import recipes from "../../recipes.json";
+import '../App.css';
 
-export default function List () {
-    const [recipesList, setRecipesList] = useState(recipes);
-
-    const deleteItem = (id) => {
-        setRecipesList(recipesList.filter(recipe => recipe.id !== id));
-    }
+export default function List ({recipes, onDelete}) {
 
     return (
         <div className="list">
-            {recipesList.map(recipe => (
-            <ListItem key={recipe.id} recipe={recipe} onDelete={deleteItem}/>
+            {recipes.map(recipe => (
+            <ListItem key={recipe.id} recipe={recipe} onDelete={onDelete}/>
             ))}
         </div>
     );
 }
+

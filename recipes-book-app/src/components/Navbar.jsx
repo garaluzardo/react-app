@@ -1,5 +1,6 @@
 import React from 'react';
 import recipesLogo from "../assets/libro.png";
+import '../App.css';
 
 export default function Navbar() {
     return (
