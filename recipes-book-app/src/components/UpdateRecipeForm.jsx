@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import '../App.css';
-import recipesData from "../../recipes.json"
+import recipesData from "../../recipesData.json"
 
 export default function UpdateRecipeForm({ currentRecipe, updateRecipe }) {
 

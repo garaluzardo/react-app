@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ListItem from './ListItem';
-import recipes from "../../recipes.json";
+import recipesData from "../../recipesData.json";
 import '../App.css';
 
 export default function List ({recipes, onDelete}) {

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
-import recipesData from "../../recipes.json"
+import recipesData from "../../recipesData.json"
 
 export default function AddRecipeForm({onAddRecipe}) {
 

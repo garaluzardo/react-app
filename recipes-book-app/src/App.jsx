@@ -7,9 +7,11 @@ import Footer from "./components/Footer";
 import Sidebar from './components/Sidebar';
 import AddRecipeForm from './components/AddRecipeForm';
 import UpdateRecipeForm from './components/UpdateRecipeForm';
+import recipesData from "../recipesData.json";
 
 export default function App() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState(recipesData);
+
 /*   const [selectedRecipe, setSelectedRecipe] = useState(null); */
 
   //Función para agregar recetas
@@ -20,7 +22,7 @@ export default function App() {
 //
 const handleDeleteRecipe = (id) => {
   setRecipes(recipes.filter(recipe => recipe.id !== id));
-}; 
+};
 
   // Función para actualizar recetas
   const handleUpdateRecipe = (updatedRecipe) => {
@@ -36,7 +38,6 @@ const handleDeleteRecipe = (id) => {
   const handleSelectRecipe = (recipe) => {
     setSelectedRecipe(recipe); // Establecemos la receta seleccionada
   };
-
 
   return (
     <>
