@@ -1,7 +1,8 @@
 import React from 'react';
 import '../App.css';
+import RecipesList from './RecipesList';
 
-export default function ListItem({ recipe, onDelete }) {
+export default function RecipesCard({ recipe, onDelete }) {
     return (
         <div className="recipe-container">
             <h3>{recipe.name}</h3>

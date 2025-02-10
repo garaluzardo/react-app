@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import ListItem from './ListItem';
+import RecipesCard from './RecipesCard';
 import recipesData from "../../recipesData.json";
 import '../App.css';
 
-export default function List ({recipes, onDelete}) {
+export default function RecipesList ({recipes, onDelete}) {
 
     return (
         <div className="list">

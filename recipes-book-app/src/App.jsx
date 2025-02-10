@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 import './App.css';
-import List from "./components/List";
+import RecipesList from "./components/RecipesList";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Sidebar from './components/Sidebar';
@@ -47,15 +47,15 @@ export default function App() {
       updateRecipe={handleUpdateRecipe} 
     />)}
 
-      {/* <Router> */}
-      {/* <Route path="" element={<HomePage />} />
-        <Route path="" element={<AboutPage />} />
-        <Route path="" element={<DashboardPage />} />
-        <Route path="" element={<ItemDetailsPage />} />
-        <Route path="" element={<NotFoundPage />} /> */}
+       <Router>
+       <Route path="/" element={<HomePage />}/>
+        <Route path="/aboutPage" element={<AboutPage/>}/>
+        <Route path="/itemDetails" element={<ItemDetailsPage/>}/>
+        <Route path="" element={<NotFoundPage/>}/> 
 
       <List recipes={recipes} onDelete={handleDeleteRecipe} />
-      {/*  </Router> */}
+
+      </Router>
 
       <Footer />
 
