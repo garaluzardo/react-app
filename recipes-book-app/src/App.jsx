@@ -9,6 +9,12 @@ import AddRecipeForm from './components/AddRecipeForm';
 import UpdateRecipeForm from './components/UpdateRecipeForm';
 import recipesData from "../recipesData.json";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ItemDetailsPage from "./pages/ItemDetailsPage";
+import NotFoundPage from "./pages/NotFoundPage";
+
 export default function App() {
   const [recipes, setRecipes] = useState(recipesData);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -35,31 +41,32 @@ export default function App() {
   };
 
   return (
-    <div className="app-container">
-      <Navbar />
-      <Sidebar />
 
-      <AddRecipeForm onAddRecipe={handleAddRecipe} />
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        <Sidebar />
 
-      {selectedRecipe && (
-        <UpdateRecipeForm
-          currentRecipe={selectedRecipe}
-          updateRecipe={handleUpdateRecipe}
-        />
-      )}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/item/:id" element={<ItemDetailsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
 
-      {/* <Router>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/aboutPage" element={<AboutPage />} />
-        <Route path="/itemDetails" element={<ItemDetailsPage />} />
-        <Route path="" element={<NotFoundPage />} />
+        <AddRecipeForm onAddRecipe={handleAddRecipe} />
 
-        <List recipes={recipes} onDelete={handleDeleteRecipe} />
+        {selectedRecipe && (
+          <UpdateRecipeForm
+            currentRecipe={selectedRecipe}
+            updateRecipe={handleUpdateRecipe}
+          />
+        )}
 
-      </Router> */}
+        <RecipesList recipes={recipes} onDelete={handleDeleteRecipe} />
 
-      <Footer />
-
-    </div>
+        <Footer />
+      </div>
+    </Router>
   )
 }
