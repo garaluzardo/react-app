@@ -3,7 +3,7 @@
   background-color: blueviolet; 
 }
 
-.list{
+.recipes-list {
   background-color: rgb(211, 211, 72);
   display: flex;
   flex-direction: column;

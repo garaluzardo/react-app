@@ -17,7 +17,7 @@ export default function App() {
   const handleAddRecipe = (newRecipe) => {
     setRecipes([...recipes, newRecipe]); // ¿¿Usamos el estado previo 'prevRecipes' para no mutar directamente el estado de recipes?? @ Carlos
   };
-  
+
   // Función para borrar receta/item
   const handleDeleteRecipe = (id) => {
     setRecipes(recipes.filter(recipe => recipe.id !== id));
@@ -42,23 +42,24 @@ export default function App() {
       <AddRecipeForm onAddRecipe={handleAddRecipe} />
 
       {selectedRecipe && (
-      <UpdateRecipeForm 
-      currentRecipe={selectedRecipe} 
-      updateRecipe={handleUpdateRecipe} 
-    />)}
+        <UpdateRecipeForm
+          currentRecipe={selectedRecipe}
+          updateRecipe={handleUpdateRecipe}
+        />
+      )}
 
-       <Router>
-       <Route path="/" element={<HomePage />}/>
-        <Route path="/aboutPage" element={<AboutPage/>}/>
-        <Route path="/itemDetails" element={<ItemDetailsPage/>}/>
-        <Route path="" element={<NotFoundPage/>}/> 
+      {/* <Router>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/aboutPage" element={<AboutPage />} />
+        <Route path="/itemDetails" element={<ItemDetailsPage />} />
+        <Route path="" element={<NotFoundPage />} />
 
-      <List recipes={recipes} onDelete={handleDeleteRecipe} />
+        <List recipes={recipes} onDelete={handleDeleteRecipe} />
 
-      </Router>
+      </Router> */}
 
       <Footer />
 
-      </div>
+    </div>
   )
 }

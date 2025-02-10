@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link, Route, Router } from "react-router-dom";
 import styles from "./HomePage.css";
-import List from "../components/List";
+import RecipesList from "../components/RecipesList";
 
 export default function HomePage() {
 
