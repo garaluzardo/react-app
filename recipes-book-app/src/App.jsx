@@ -15,15 +15,24 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 import RecipesList from "./components/RecipesList";
 
-
 export default function App() {
-  const [recipes, setRecipes] = useState(recipesData);
 
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [recipes, setRecipes] = useState(() => {
+    
+    // Intentar cargar las recetas desde el localStorage
+    const savedRecipes = localStorage.getItem('recipes');
+    return savedRecipes ? JSON.parse(savedRecipes) : recipesData;
+  });
+
+  /* const [selectedRecipe, setSelectedRecipe] = useState(null); */
 
   //Función para agregar recetas
   const handleAddRecipe = (newRecipe) => {
-    setRecipes([...recipes, newRecipe]); // ¿¿Usamos el estado previo 'prevRecipes' para no mutar directamente el estado de recipes?? @ Carlos
+    const updatedRecipes = ([...recipes, newRecipe]); // ¿¿Usamos el estado previo 'prevRecipes' para no mutar directamente el estado de recipes?? @ Carlos
+    setRecipes(updatedRecipes);
+
+    localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
+
   };
 
   // Función para borrar receta/item
@@ -36,16 +45,17 @@ export default function App() {
       <div className="app-container">
         <Navbar />
         <Sidebar />
-
         <Routes>
           <Route path="/" element={<HomePage recipes={recipes} onDelete={handleDeleteRecipe}/> } />
           <Route path="/about-page" element={<AboutPage />} />
           <Route path="/recipe-detail/:id" element={<ItemDetailsPage recipes={recipes} />} />
           <Route path="*" element={<NotFoundPage />} />
+
           <Route
             path="/add-recipe"
             element={<AddRecipeForm onAddRecipe={handleAddRecipe} />}
           />
+
         </Routes>
         
         {/* {selectedRecipe && (

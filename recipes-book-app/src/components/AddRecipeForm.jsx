@@ -12,8 +12,6 @@ export default function AddRecipeForm({onAddRecipe}) {
     const [servings, setServings] = useState(0);
     const [recipes, setRecipes] = useState(recipesData);
 
-
-    
     const handleAddRecipe = (e) => {
         e.preventDefault();
 
