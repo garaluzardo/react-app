@@ -1,6 +1,7 @@
 .app-container {
   width: 100vw;
   background-color: blueviolet; 
+  overflow: auto;;
 }
 
 .recipes-list {
@@ -36,7 +37,7 @@ background-color: lightcoral;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 200px;
+  width: 50px;
   height: 100vh;
   padding: 10px;
   position: fixed;
@@ -62,7 +63,61 @@ background-color: lightcoral;
 }
 
 .add-form {
-  background-color: lightslategray;
+  background-color: rgb(111, 161, 111); /* Color de fondo del formulario */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centrar el formulario en la página */
+}
+
+.add-form form {
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en columna */
+  gap: 15px; /* Espacio entre los elementos del formulario */
+}
+
+.add-form span {
+  font-size: 24px; /* Tamaño del título */
+  font-weight: bold; /* Negrita */
+  color: white; /* Color del texto */
+  text-align: center; /* Centrar el texto */
+  margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+.add-form label {
+  display: flex;
+  flex-direction: column; /* Organiza el label y el input en columna */
+  gap: 5px; /* Espacio entre el label y el input */
+  color: white; /* Color del texto del label */
+}
+
+.add-form input {
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde del input */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de la fuente */
+  background-color: white; /* Fondo del input */
+  color: #333; /* Color del texto */
+}
+
+.add-form input::placeholder {
+  color: #999; /* Color del placeholder */
+}
+
+.add-form button {
+  padding: 10px 20px; /* Espaciado interno */
+  background-color: #4CAF50; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.add-form button:hover {
+  background-color: #45a049; /* Cambia el color al pasar el ratón */
 }
 
 .navbar {
@@ -71,6 +126,8 @@ background-color: lightcoral;
   flex-direction: column;
   justify-content: center;
   position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .navbar img {
@@ -88,3 +145,27 @@ background-color: lightcoral;
   width: 100px;
 }
 
+.recipe-details-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  background-color: white; /* O un color visible */
+  padding: 20px;
+  border: 2px solid black;
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vw;
+  background-color: pink;
+}
+
+.about-page h1, p {
+  text-align: center;
+  font-size: 50px;
+}

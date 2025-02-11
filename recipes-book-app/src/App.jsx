@@ -10,10 +10,11 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import AddRecipeForm from './components/AddRecipeForm';
 import recipesData from "../recipesData.json";
-
-import RecipesList from "./components/RecipesList";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
+
+import RecipesList from "./components/RecipesList";
+
 
 export default function App() {
   const [recipes, setRecipes] = useState(recipesData);
@@ -31,24 +32,22 @@ export default function App() {
   };
 
   return (
-
     <Router>
       <div className="app-container">
         <Navbar />
         <Sidebar />
 
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="/about" element={<AboutPage />} />
-          <Route path="/item/:id" element={<ItemDetailsPage />} /> */}
+          <Route path="/" element={<HomePage recipes={recipes} onDelete={handleDeleteRecipe}/> } />
+          <Route path="/about-page" element={<AboutPage />} />
+          <Route path="/recipe-detail/:id" element={<ItemDetailsPage recipes={recipes} />} />
           <Route path="*" element={<NotFoundPage />} />
           <Route
-          path="/add-recipe"
-          element={<AddRecipeForm onAddRecipe={handleAddRecipe} />}
-        />
+            path="/add-recipe"
+            element={<AddRecipeForm onAddRecipe={handleAddRecipe} />}
+          />
         </Routes>
         
-
         {/* {selectedRecipe && (
           <UpdateRecipeForm
             currentRecipe={selectedRecipe}

@@ -1,11 +1,21 @@
 import React from "react";
-import { Link, Route, Router } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-export default function ItemDetailsPage() {
+export default function ItemDetailsPage({ recipes }) {
+    const { id } = useParams();
+    const recipe = recipes.find((r) => r.id === Number(id));
+
+    if (!recipe) {
+        return <h2>Receta no encontrada</h2>;
+    }
+
     return (
-        <>
-        <h1>Item Details Page</h1>
-        <p>A page that displays all the details of an item selected from the items list.</p>
-        </>
+        <div className="recipe-details">
+            <h1>{recipe.name}</h1>
+            <p>Calorías: {recipe.calories}</p>
+            <img src={recipe.image} alt={recipe.name} />
+            <p>Porciones: {recipe.servings}</p>
+            <button>Editar Receta</button>
+        </div>
     );
 }
