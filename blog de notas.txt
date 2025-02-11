@@ -1,0 +1,10 @@
+ // Función para seleccionar receta que queremos actualizar/editar
+  const handleSelectRecipe = (recipe) => {
+    setSelectedRecipe(recipe); // Establecemos la receta seleccionada
+  };
+
+  // Función para actualizar recetas
+  const handleUpdateRecipe = (updatedRecipe) => {
+    setRecipes(recipes.map(recipe => recipe.id === updatedRecipe.id ? updatedRecipe : recipe));
+    setSelectedRecipe(null);  // Después de actualizar, limpiamos la selección
+  };
