@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function RecipesCard({ recipe, onDelete }) {
     return (
-        <div className="recipe-container">
+        <div className="recipes-card">
             <h3>{recipe.name}</h3>
             <p>{recipe.calories}</p>
             <img src={recipe.image} alt={recipe.name} />
@@ -17,4 +17,3 @@ export default function RecipesCard({ recipe, onDelete }) {
         </div>
     );
 }
-

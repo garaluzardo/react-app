@@ -2,21 +2,22 @@ import { useState } from 'react';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
+import { v4 as uuidv4 } from 'uuid';
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Sidebar from './components/Sidebar';
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-import AddRecipeForm from './components/AddRecipeForm';
+import AddRecipeForm from './components/RecipeForm';
 import recipesData from "../recipesData.json";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
-
 import RecipesList from "./components/RecipesList";
 
 export default function App() {
 
+  const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [recipes, setRecipes] = useState(() => {
     
     // Intentar cargar las recetas desde el localStorage
@@ -24,27 +25,43 @@ export default function App() {
     return savedRecipes ? JSON.parse(savedRecipes) : recipesData;
   });
 
-  /* const [selectedRecipe, setSelectedRecipe] = useState(null); */
-
   //Función para agregar recetas
   const handleAddRecipe = (newRecipe) => {
-    const updatedRecipes = ([...recipes, newRecipe]); // ¿¿Usamos el estado previo 'prevRecipes' para no mutar directamente el estado de recipes?? @ Carlos
-    setRecipes(updatedRecipes);
-
-    localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
-
+    newRecipe.id = uuidv4().toString(); // Asignar un ID único
+    const newRecipes = [...recipes, newRecipe];
+    setRecipes(newRecipes);
+    localStorage.setItem('recipes', JSON.stringify(newRecipes));
   };
 
-  // Función para borrar receta/item
+  // Función para borrar receta
   const handleDeleteRecipe = (id) => {
-    setRecipes(recipes.filter(recipe => recipe.id !== id));
+    const deletedRecipes = recipes.filter(recipe => recipe.id !== id);
+    setRecipes(deletedRecipes);
+    localStorage.setItem('recipes', JSON.stringify(deletedRecipes));
   };
+
+//Función para actualizar recetas
+const handleUpdateRecipe = (updatedRecipe) => {
+  const updatedRecipes = recipes.map(recipe => 
+    recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+  );
+  setRecipes(updatedRecipes);
+  localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
+}
+
+/* // Función para seleccionar una receta para actualizar
+const handleSelectRecipe = (id) => {
+  const recipe = recipes.find(recipe => recipe.id === id);
+  setSelectedRecipe(recipe);
+}; */
 
   return (
     <Router>
-      <div className="app-container">
+      <>
         <Navbar />
         <Sidebar />
+        <Footer />
+        <div className="app-container">
         <Routes>
           <Route path="/" element={<HomePage recipes={recipes} onDelete={handleDeleteRecipe}/> } />
           <Route path="/about-page" element={<AboutPage />} />
@@ -57,18 +74,10 @@ export default function App() {
           />
 
         </Routes>
-        
-        {/* {selectedRecipe && (
-          <UpdateRecipeForm
-            currentRecipe={selectedRecipe}
-            updateRecipe={handleUpdateRecipe}
-          />
-        )}
-
-        <RecipesList recipes={recipes} onDelete={handleDeleteRecipe} /> */}
-
-        <Footer />
-      </div>
+        </div>
+       
+    
+      </>
     </Router>
   )
 }

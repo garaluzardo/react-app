@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Route, Router } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
 export default function NotFoundPage() {
     return (
         <div className="not-found">
@@ -12,4 +11,3 @@ export default function NotFoundPage() {
         </div>
     )
 }
-
