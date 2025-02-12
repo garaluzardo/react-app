@@ -1,40 +1,43 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";  // Importamos uuid
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import "../App.css";
-import recipesData from "../../recipesData.json";
 
-export default function UpdateRecipeForm() {
+export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
+  const { id } = useParams(); // Obtenemos el ID de la receta desde la URL
+  const navigate = useNavigate(); //Creamos una función de navegación.
+
+  // Estados para los campos del formulario
   const [name, setName] = useState("");
   const [calories, setCalories] = useState(0);
   const [image, setImage] = useState("");
   const [servings, setServings] = useState(0);
-  const [recipes, setRecipes] = useState(recipesData);
-  const navigate = useNavigate(); // Para redirigir después de actualizar
 
+  // Pre-cargar los datos de la receta al montar el componente
+  useEffect(() => {
+    const recipeToUpdate = recipes.find((recipe) => recipe.id === id);
+    if (recipeToUpdate) {
+      setName(recipeToUpdate.name);
+      setCalories(recipeToUpdate.calories);
+      setImage(recipeToUpdate.image);
+      setServings(recipeToUpdate.servings);
+    }
+  }, [id, recipes]);
+
+  // Manejar la actualización de la receta
   const handleUpdateRecipe = (e) => {
     e.preventDefault();
 
-    // Crear el objeto de la receta actualizada con una nueva id
     const updatedRecipe = {
-      id: uuidv4(), // Genera un nuevo UUID en vez de usar Date.now()
+      id,
       name,
       calories,
       image,
       servings,
     };
 
-    // Actualizar la lista de recetas
-    setRecipes((prevRecipes) =>
-      prevRecipes.map((recipe) =>
-        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-      )
-    );
+    onUpdateRecipe(updatedRecipe); // Llamar a la función de actualización
+    navigate("/"); // Redirigir a homepage
 
-    console.log("Receta actualizada:", updatedRecipe);
-
-    // Opcional: Redirigir a otra página
-    navigate("/recipes");
   };
 
   return (

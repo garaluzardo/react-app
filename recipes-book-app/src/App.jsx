@@ -13,19 +13,16 @@ import AddRecipeForm from './components/RecipeForm';
 import recipesData from "../recipesData.json";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import RecipesList from "./components/RecipesList";
+import UpdateRecipeForm from './components/UpdateRecipeForm'; // Importar el componente
 
 export default function App() {
-
-  const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [recipes, setRecipes] = useState(() => {
-    
     // Intentar cargar las recetas desde el localStorage
     const savedRecipes = localStorage.getItem('recipes');
     return savedRecipes ? JSON.parse(savedRecipes) : recipesData;
   });
 
-  //Función para agregar recetas
+  // Función para agregar recetas
   const handleAddRecipe = (newRecipe) => {
     newRecipe.id = uuidv4().toString(); // Asignar un ID único
     const newRecipes = [...recipes, newRecipe];
@@ -40,20 +37,14 @@ export default function App() {
     localStorage.setItem('recipes', JSON.stringify(deletedRecipes));
   };
 
-//Función para actualizar recetas
-const handleUpdateRecipe = (updatedRecipe) => {
-  const updatedRecipes = recipes.map(recipe => 
-    recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-  );
-  setRecipes(updatedRecipes);
-  localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
-}
-
-/* // Función para seleccionar una receta para actualizar
-const handleSelectRecipe = (id) => {
-  const recipe = recipes.find(recipe => recipe.id === id);
-  setSelectedRecipe(recipe);
-}; */
+  // Función para actualizar recetas
+  const handleUpdateRecipe = (updatedRecipe) => {
+    const updatedRecipes = recipes.map(recipe =>
+      recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+    );
+    setRecipes(updatedRecipes);
+    localStorage.setItem('recipes', JSON.stringify(updatedRecipes));
+  };
 
   return (
     <Router>
@@ -62,22 +53,32 @@ const handleSelectRecipe = (id) => {
         <Sidebar />
         <Footer />
         <div className="app-container">
-        <Routes>
-          <Route path="/" element={<HomePage recipes={recipes} onDelete={handleDeleteRecipe}/> } />
-          <Route path="/about-page" element={<AboutPage />} />
-          <Route path="/recipe-detail/:id" element={<ItemDetailsPage recipes={recipes} />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Routes>
+            <Route path="/" element={<HomePage recipes={recipes} onDelete={handleDeleteRecipe} />} />
+            <Route path="/about-page" element={<AboutPage />} />
+            <Route path="/recipe-detail/:id" element={<ItemDetailsPage recipes={recipes} />} />
+            <Route path="*" element={<NotFoundPage />} />
 
-          <Route
-            path="/add-recipe"
-            element={<AddRecipeForm onAddRecipe={handleAddRecipe} />}
-          />
+            <Route
+              path="/add-recipe"
+              element={<AddRecipeForm onAddRecipe={handleAddRecipe} />}
+            />
 
-        </Routes>
+            <Route
+              path="/update-recipe/:id"
+              element={<UpdateRecipeForm recipes={recipes} onUpdateRecipe={handleUpdateRecipe} />}
+            />
+          </Routes>
         </div>
-       
-    
       </>
     </Router>
-  )
+  );
 }
+
+
+
+/* // Función para seleccionar una receta para actualizar
+const handleSelectRecipe = (id) => {
+  const recipe = recipes.find(recipe => recipe.id === id);
+  setSelectedRecipe(recipe);
+}; */
