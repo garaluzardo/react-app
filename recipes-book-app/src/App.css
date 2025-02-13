@@ -1,6 +1,9 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
@@ -18,20 +21,31 @@ body {
   grid-area: app;
   background-color: rgb(176, 100, 248);
   border: solid rgb(125, 15, 123) 5px;
-  overflow: auto;
   box-sizing: border-box;
 
-   /* Ajuste para respetar navbar */
-   margin-top: 113.2px; /* Misma altura del navbar */
-
-  /* Ajuste para respetar navbar y footer */
-  padding-top: 60px; /* Misma altura del navbar */
-  padding-bottom: 40px; /* Misma altura del footer */
-
-  /* Ajuste para respetar el sidebar */
-  width: calc(100vw - 100px); /* Resta el ancho del sidebar */
-  margin-left: 100px; /* Mueve el contenedor a la derecha */
+  /* Ajustar para respetar el navbar y el footer */
+  position: fixed;
+  top: 113.2px; /* Altura del navbar */
+  bottom: 40px; /* Altura del footer */
+  left: 100px; /* Ancho del sidebar */
+  right: 0; /* Ajusta al ancho total de la ventana */
+  overflow-y: auto; /* Permite desplazamiento si es necesario */
 }
+
+.home-page,
+.about-page,
+.item-detail-page,
+.not-found-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 
 .recipes-list {
   background-color: rgb(237, 237, 126);
@@ -68,13 +82,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  
 }
 
 .navbar img {
   width: 50px;
 }
 
-.navbar-logo, .navbar-title {
+.navbar-logo,
+.navbar-title {
   width: 90px;
   display: flex;
   flex-direction: column;
@@ -106,10 +122,15 @@ body {
   margin: 0;
   width: 100%;
   /* Asegura que el ul ocupe todo el ancho de la sidebar */
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
 }
 
 .sidebar li {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Inter', 'Courier New', Courier, monospace;
   gap: 10px;
   width: 100%;
   /* Asegura que el li ocupe todo el ancho del ul */
@@ -248,26 +269,43 @@ body {
 .about-page {
   background-color: pink;
   display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vw;
-}
-
-.about-page h1,
-p {
-  text-align: center;
-  font-size: 50px;
-}
-
-.recipe-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  width: 500px;
-  height: 500px;
-  background-color: white;
-  /* O un color visible */
-  padding: 20px;
-  border: 2px solid black;
+  width: inherit;
+  height: inherit;
+  gap: 100px;
 }
+
+  .about-page div {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .about-page>div>img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profile-picture {
+    border-radius: 30px;
+  }
+
+  .about-page h1,
+  p {
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .recipes-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    /* O un color visible */
+    padding: 20px;
+    border: 2px solid black;
+  }

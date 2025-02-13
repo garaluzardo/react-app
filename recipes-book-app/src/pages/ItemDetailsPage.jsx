@@ -18,7 +18,7 @@ export default function ItemDetailsPage({ recipes }) {
   }
 
   return (
-    <div className="recipe-details">
+    <div className="item-details-page">
       <h1>{recipe.name}</h1>
       <p>Calorías: {recipe.calories}</p>
       <img src={recipe.image} alt={recipe.name} />

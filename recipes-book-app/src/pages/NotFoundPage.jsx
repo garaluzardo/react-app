@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function NotFoundPage() {
     return (
-        <div className="not-found">
+        <div className="not-found-page">
             <h1>404</h1>
             {/* <img> aqui va un meme </img> */}
             <Link to="/">retorno a HomePage</Link>

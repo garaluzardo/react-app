@@ -1,14 +1,34 @@
 import React from "react";
 import { Link, Route, Router } from "react-router-dom";
+import GHLogo from "../assets/GH.png";
+import LDNLogo from "../assets/in.png";
+import GaraProfile from "../assets/gara-cropped.jpg";
+import AythaProfile from "../assets/aytha-profile.png";
 
 export default function AboutPage() {
     return (
         <div className="about-page">
-            <h1>About Page</h1>
-            <p>A page showing the project description and information about the team members
-        working on the project, including links to your GitHub and LinkedIn profiles.</p>
 
+            <div className="gara-details">
+                
+                <img className="profile-picture" src={GaraProfile} alt="Profile picture" />
+                <p>Gara</p>
+                <img src={GHLogo} alt="GitHub" />
+                <img src={LDNLogo} alt="LinkedIn" /> 
+                <a href="">
+                <p></p>
+                </a>
+            </div>
+
+            <div className='aytha-details'>
+                <img className="profile-picture" src={AythaProfile} alt="Profile picture" />
+                <p>Aytha</p>
+                <img src={GHLogo} alt="GitHub" />
+                <img src={LDNLogo} alt="LinkedIn" /> 
+                <a href="">
+                <p></p>
+                </a>
+            </div>
         </div>
-
     );
 }
