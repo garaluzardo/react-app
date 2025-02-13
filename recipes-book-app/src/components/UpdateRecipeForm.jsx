@@ -62,9 +62,9 @@ export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
             <input
               name="calories"
               type="text"
-              placeholder="How many calories?"
+              placeholder="Calories"
               value={calories}
-              onChange={(e) => setCalories(Number(e.target.value))}
+              onChange={(e) => setCalories(e.target.value)}
             />
           </label>
 
@@ -82,7 +82,7 @@ export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
             <textarea
               name="instructions"
               type="text"
-              placeholder="Instructions"
+              placeholder="Write more info"
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
             />
@@ -93,7 +93,7 @@ export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
               type="number"
               placeholder="Servings"
               value={servings}
-              onChange={(e) => setServings(Number(e.target.value))}
+              onChange={(e) => setServings(e.target.value)}
             />
           </label>
         </div>

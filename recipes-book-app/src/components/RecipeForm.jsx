@@ -12,6 +12,8 @@ export default function RecipeForm({ onAddRecipe }) {
     const [instructions, setInstructions] = useState("");
     const [servings, setServings] = useState("");
 
+    const navigate = useNavigate();
+
     const handleAddRecipe = (e) => {
         e.preventDefault();
 
@@ -33,6 +35,9 @@ export default function RecipeForm({ onAddRecipe }) {
         setImage("");
         setInstructions("");
         setServings(0);
+
+        navigate("/")
+
     };
 
     return (
@@ -52,7 +57,7 @@ export default function RecipeForm({ onAddRecipe }) {
                     <label>
                         <input name="calories"
                             type="text"
-                            placeholder="How many calories?"
+                            placeholder="Calories"
                             value={calories}
                             onChange={(e) => setCalories(e.target.value)} />
                     </label>
@@ -60,7 +65,7 @@ export default function RecipeForm({ onAddRecipe }) {
                     <label>
                         <input name="image"
                             type="url"
-                            placeholder="Your URL here"
+                            placeholder="Image URL"
                             value={image}
                             onChange={(e) => setImage(e.target.value)} />
                     </label>
@@ -69,7 +74,7 @@ export default function RecipeForm({ onAddRecipe }) {
                     <textarea
                          name="instructions"
                             type="text"
-                            placeholder="Write more info "
+                            placeholder="Write more info"
                             value={instructions}
                             onChange={(e) => setInstructions(e.target.value)}
                     />
@@ -78,7 +83,7 @@ export default function RecipeForm({ onAddRecipe }) {
                         
                         <input name="servings"
                             type="number"
-                            placeholder="servings"
+                            placeholder="Servings"
                             value={servings}
                             onChange={(e) => setServings(e.target.value)} />
                     </label>

@@ -20,9 +20,10 @@ export default function ItemDetailsPage({ recipes }) {
   return (
     <div className="item-details-page">
       <h1>{recipe.name}</h1>
-      <p>Calorías: {recipe.calories}</p>
+      
       <img src={recipe.image || null} alt={recipe.name} />
       <p>{recipe.instructions}</p>
+      <p>Calorías: {recipe.calories}</p>
       <p>Porciones: {recipe.servings}</p>
       <Link to={`/update-recipe/${recipe.id}`}>
       <button>Update</button>
