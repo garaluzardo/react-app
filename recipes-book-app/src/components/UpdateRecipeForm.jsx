@@ -4,12 +4,13 @@ import "../App.css";
 
 export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
   const { id } = useParams(); // Obtenemos el ID de la receta desde la URL
-  const navigate = useNavigate(); //Creamos una función de navegación.
+  const navigate = useNavigate(); //Creamos una función de navegación
 
   // Estados para los campos del formulario
   const [name, setName] = useState("");
   const [calories, setCalories] = useState(0);
   const [image, setImage] = useState("");
+  const [instructions, setInstructions] = useState("");
   const [servings, setServings] = useState(0);
 
   // Pre-cargar los datos de la receta al montar el componente
@@ -19,6 +20,7 @@ export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
       setName(recipeToUpdate.name);
       setCalories(recipeToUpdate.calories);
       setImage(recipeToUpdate.image);
+      setInstructions(recipeToUpdate.instructions);
       setServings(recipeToUpdate.servings);
     }
   }, [id, recipes]);
@@ -32,11 +34,12 @@ export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
       name,
       calories,
       image,
+      instructions,
       servings,
     };
 
-    onUpdateRecipe(updatedRecipe); // Llamar a la función de actualización
-    navigate("/"); // Redirigir a homepage
+    onUpdateRecipe(updatedRecipe); // Actualizar receta
+    navigate(`/recipe-detail/${id}`); // Redirigir a recipe-details
 
   };
 
@@ -75,6 +78,15 @@ export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
             />
           </label>
 
+          <label>
+            <textarea
+              name="instructions"
+              type="text"
+              placeholder="Write more info "
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+            />
+          </label>
           <label>
             <input
               name="servings"

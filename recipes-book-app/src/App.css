@@ -1,311 +1,155 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: Poppins;
 }
 
-body {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    "navbar navbar"
-    "sidebar app"
-    "footer footer";
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .app-container {
-  grid-area: app;
-  background-color: rgb(176, 100, 248);
-  border: solid rgb(125, 15, 123) 5px;
-  box-sizing: border-box;
-
-  /* Ajustar para respetar el navbar y el footer */
-  position: fixed;
-  top: 113.2px; /* Altura del navbar */
-  bottom: 40px; /* Altura del footer */
-  left: 100px; /* Ancho del sidebar */
-  right: 0; /* Ajusta al ancho total de la ventana */
-  overflow-y: auto; /* Permite desplazamiento si es necesario */
-}
-
-.home-page,
-.about-page,
-.item-detail-page,
-.not-found-page {
-  width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
+  flex: 1;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  height: calc(100vh - 140px); 
+  overflow-y: auto; 
 }
 
-
-.recipes-list {
-  background-color: rgb(237, 237, 126);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
-  border: solid, 10px;
-  border-color: rgb(218, 200, 0);
-  padding: 50px;
-}
-
-.recipes-card {
-  width: 300px;
-  height: 200px;
-  background-color: rgb(96, 22, 22);
-  border-color: rgb(255, 4, 4);
-}
-
-.recipes-card img {
-  width: 25%;
-  height: auto;
-  border-radius: 25%;
-  background-color: rgb(255, 255, 255);
-}
-
-/*NAVBAR*/
 .navbar {
-  grid-area: navbar;
-  background-color: rgba(0, 56, 239, 0.664);
-  color: white;
+  height: 80px;
+  background: #fff;
   position: fixed;
-  padding: 1em;
   top: 0;
   left: 0;
   width: 100%;
-  
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000; 
+  box-shadow: 0 2px 4px rgba(105, 105, 105, 0.1);
+  justify-content: center;
+  gap: 10px;
+}
+
+.light-text {
+  font-weight: 300;
 }
 
 .navbar img {
-  width: 50px;
+  padding-top: 15px;
+  max-width: 100%;
+  height: auto;
+  max-height: 50px; 
 }
 
-.navbar-logo,
-.navbar-title {
-  width: 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.navbar a {
+ text-decoration: none;
+ color: black;
+ font-size: 1.7rem;
 }
 
-/*SIDEBAR*/
 .sidebar {
-  grid-area: sidebar;
-  background-color: rgba(146, 79, 79, 0.588);
+  width: 250px;
+  background: #f4f4f4;
   position: fixed;
-  top: 113.2px;
-  height: 100vh;
-  align-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100px;
-  padding: 10px;
-  left: 0;
-
-  padding: 0px;
-  overflow-y: auto;
+  top: 80px; 
+  bottom: 60px; 
+  overflow-y: auto; 
 }
 
 .sidebar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  /* Asegura que el ul ocupe todo el ancho de la sidebar */
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
+  list-style: none;
 }
 
-.sidebar li {
-  font-family: 'Inter', 'Courier New', Courier, monospace;
-  gap: 10px;
-  width: 100%;
-  /* Asegura que el li ocupe todo el ancho del ul */
+.sidebar ul li a {
+  display: block;
   padding: 10px;
-  box-sizing: border-box;
-  /* Incluye el padding en el ancho total del elemento */
-  white-space: normal;
-  /* Permite que el texto se divida en varias líneas */
-  word-wrap: break-word;
-  /* Rompe palabras largas si es necesario */
-  overflow-wrap: break-word;
-  /* Similar a word-wrap, pero más moderno */
-  border-radius: 15px;
-  background-color: #c4c4c4;
-  color: white;
+  text-decoration: none;
+  color: #333;
 }
 
 
-/*FOOTER*/
+.content {
+  flex: 1; 
+  padding: 20px;
+  margin-left: 250px; 
+  overflow-y: auto;
+}
+
+
 .footer {
-  grid-area: footer;
-  background-color: #4242427e;
-  color: white;
-  padding: 1em;
+  height: 60px;
+  background: white;
   position: fixed;
-  display: flex;
-  justify-content: center;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 40px;
-
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer img {
-  width: 100px;
+  max-width: 100%;
+  height: auto; 
+  max-height: 50px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+footer img:hover {
+  transform: scale(1.1); 
+  opacity: 0.8; 
+}
 
-/*FORMS*/
-.add-form {
-  background-color: rgb(111, 161, 111);
-  /* Color de fondo del formulario */
+.recipes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  gap: 20px; 
   padding: 20px;
-  /* Espaciado interno */
+  box-sizing: border-box;
+}
+
+.recipes-card {
+  background-color: #fff;
   border-radius: 10px;
-  /* Bordes redondeados */
+  overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
-  max-width: 400px;
-  /* Ancho máximo del formulario */
-  margin: 0 auto;
-  /* Centrar el formulario en la página */
+  transition: transform 0.2s ease-in-out;
 }
 
-.add-form form {
-  display: flex;
-  flex-direction: column;
-  /* Organiza los elementos en columna */
-  gap: 15px;
-  /* Espacio entre los elementos del formulario */
+.recipes-card:hover {
+  transform: translateY(-5px); 
 }
 
-.add-form span {
-  font-size: 24px;
-  /* Tamaño del título */
-  font-weight: bold;
-  /* Negrita */
-  color: white;
-  /* Color del texto */
-  text-align: center;
-  /* Centrar el texto */
-  margin-bottom: 10px;
-  /* Espacio debajo del título */
+.recipes-card img {
+  width: 100%;
+  height: 200px; 
+  object-fit: cover; 
 }
 
-.add-form label {
-  display: flex;
-  flex-direction: column;
-  /* Organiza el label y el input en columna */
-  gap: 5px;
-  /* Espacio entre el label y el input */
-  color: white;
-  /* Color del texto del label */
-}
 
-.add-form input {
+.recipes-card h3 {
   padding: 10px;
-  /* Espaciado interno */
-  border: 1px solid #ccc;
-  /* Borde del input */
-  border-radius: 5px;
-  /* Bordes redondeados */
-  font-size: 16px;
-  /* Tamaño de la fuente */
-  background-color: white;
-  /* Fondo del input */
+  font-size: 1.2em;
+  font-weight: bold;
   color: #333;
-  /* Color del texto */
+  text-align: center;
 }
 
-.add-form input::placeholder {
-  color: #999;
-  /* Color del placeholder */
-}
-
-.add-form button {
-  padding: 10px 20px;
-  /* Espaciado interno */
-  background-color: #4CAF50;
-  /* Color de fondo del botón */
-  color: white;
-  /* Color del texto */
+.recipes-card button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
   border: none;
-  /* Sin borde */
-  border-radius: 5px;
-  /* Bordes redondeados */
-  font-size: 16px;
-  /* Tamaño de la fuente */
+  background-color: #ef745e;
+  color: #fff;
   cursor: pointer;
-  /* Cambia el cursor al pasar sobre el botón */
-  transition: background-color 0.3s ease;
-  /* Transición suave */
+  font-size: 1em;
+  transition: background-color 0.3s;
 }
 
-.add-form button:hover {
-  background-color: #45a049;
-  /* Cambia el color al pasar el ratón */
+.recipes-card button:hover {
+  background-color: #a3352b; 
 }
-
-
-
-
-/*PAGES*/
-.about-page {
-  background-color: pink;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: inherit;
-  height: inherit;
-  gap: 100px;
-}
-
-  .about-page div {
-    display: flex;
-    flex-direction: column;
-
-  }
-
-  .about-page>div>img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .profile-picture {
-    border-radius: 30px;
-  }
-
-  .about-page h1,
-  p {
-    text-align: center;
-    font-size: 30px;
-  }
-
-  .recipes-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 300px;
-    background-color: white;
-    /* O un color visible */
-    padding: 20px;
-    border: 2px solid black;
-  }

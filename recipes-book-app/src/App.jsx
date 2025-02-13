@@ -13,7 +13,7 @@ import AddRecipeForm from './components/RecipeForm';
 import recipesData from "../recipesData.json";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import UpdateRecipeForm from './components/UpdateRecipeForm'; // Importar el componente
+import UpdateRecipeForm from './components/UpdateRecipeForm';
 
 export default function App() {
   const [recipes, setRecipes] = useState(() => {
@@ -24,7 +24,7 @@ export default function App() {
 
   // Función para agregar recetas
   const handleAddRecipe = (newRecipe) => {
-    newRecipe.id = uuidv4().toString(); // Asignar un ID único
+    newRecipe.id = uuidv4().toString(); // Asignamos un ID único
     const newRecipes = [...recipes, newRecipe];
     setRecipes(newRecipes);
     localStorage.setItem('recipes', JSON.stringify(newRecipes));
@@ -48,11 +48,10 @@ export default function App() {
 
   return (
     <Router>
-      <>
         <Navbar />
-        <Sidebar />
-        <Footer />
         <div className="app-container">
+        <Sidebar />
+        <div className="content">
           <Routes>
             <Route path="/" element={<HomePage recipes={recipes} onDelete={handleDeleteRecipe} />} />
             <Route path="/about-page" element={<AboutPage />} />
@@ -69,16 +68,9 @@ export default function App() {
               element={<UpdateRecipeForm recipes={recipes} onUpdateRecipe={handleUpdateRecipe} />}
             />
           </Routes>
+          </div>
         </div>
-      </>
+        <Footer />
     </Router>
   );
 }
-
-
-
-/* // Función para seleccionar una receta para actualizar
-const handleSelectRecipe = (id) => {
-  const recipe = recipes.find(recipe => recipe.id === id);
-  setSelectedRecipe(recipe);
-}; */
