@@ -1,73 +1,92 @@
-import { useState } from "react";
-import React from "react";
-import '../App.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import "../App.css";
 
-export default function UpdateRecipeForm({ currentRecipe, updateRecipe }) {
+export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
+  const { id } = useParams(); // Obtenemos el ID de la receta desde la URL
+  const navigate = useNavigate(); //Creamos una función de navegación.
 
-    // Estados para los campos del formulario con valores por defecto si la receta existe
-    const [name, setName] = useState(currentRecipe.name);
-    const [calories, setCalories] = useState(currentRecipe.calories);
-    const [image, setImage] = useState(currentRecipe.image);
-    const [servings, setServings] = useState(currentRecipe.servings);
+  // Estados para los campos del formulario
+  const [name, setName] = useState("");
+  const [calories, setCalories] = useState(0);
+  const [image, setImage] = useState("");
+  const [servings, setServings] = useState(0);
 
-    // Manejamos la actualización del formulario
-    const handleUpdate = e => {
-        e.preventDefault();
+  // Pre-cargar los datos de la receta al montar el componente
+  useEffect(() => {
+    const recipeToUpdate = recipes.find((recipe) => recipe.id === id);
+    if (recipeToUpdate) {
+      setName(recipeToUpdate.name);
+      setCalories(recipeToUpdate.calories);
+      setImage(recipeToUpdate.image);
+      setServings(recipeToUpdate.servings);
+    }
+  }, [id, recipes]);
 
-        // Creamos un objeto con los datos de la receta actualizada
-        const updatedRecipe = {
-            id: currentRecipe.id,
-            name,
-            calories,
-            image,
-            servings,
-        };
+  // Manejar la actualización de la receta
+  const handleUpdateRecipe = (e) => {
+    e.preventDefault();
 
-        // LLamar a la función de actualizar receta
-        updateRecipe(updatedRecipe);
+    const updatedRecipe = {
+      id,
+      name,
+      calories,
+      image,
+      servings,
     };
 
-    return (
-        <div className="update-form">
-        <form onSubmit={handleUpdate}>
-            <span>Update Recipe</span>
-            <div>
-            <label>
-            <input name= "name" 
-            type="text" 
-            placeholder="Recipe"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+    onUpdateRecipe(updatedRecipe); // Llamar a la función de actualización
+    navigate("/"); // Redirigir a homepage
+
+  };
+
+  return (
+    <div className="update-form">
+      <form onSubmit={handleUpdateRecipe}>
+        <span>Update Recipe</span>
+        <div>
+          <label>
+            <input
+              name="name"
+              type="text"
+              placeholder="Recipe name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-            </label>
+          </label>
 
-            <label>
-            <input name= "calories"
-            type= "text"
-            placeholder="calories"
-            value={calories}
-            onChange={(e) => setCalories(Number(e.target.value))} />
-            </label>
+          <label>
+            <input
+              name="calories"
+              type="text"
+              placeholder="How many calories?"
+              value={calories}
+              onChange={(e) => setCalories(Number(e.target.value))}
+            />
+          </label>
 
-            <label>
-            <input name= "image" 
-            type="url"
-            placeholder=""
-            value={image}
-            onChange={(e) => setImage(e.target.value)} />
-            </label>
+          <label>
+            <input
+              name="image"
+              type="url"
+              placeholder="Image URL"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </label>
 
-            <label>
-            <input name= "servings" 
-            type = "number"
-            placeholder="servings"
-            value={servings}
-            onChange={(e) => setServings(Number(e.target.value))} />
-            </label>
-            </div> 
-            <button type="submit">Update Recipe</button>   
-        </form>
-        
+          <label>
+            <input
+              name="servings"
+              type="number"
+              placeholder="Servings"
+              value={servings}
+              onChange={(e) => setServings(Number(e.target.value))}
+            />
+          </label>
+        </div>
+        <button type="submit">Update Recipe</button>
+      </form>
     </div>
-    );
+  );
 }

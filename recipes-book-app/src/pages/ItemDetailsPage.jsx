@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function ItemDetailsPage({ recipes }) {
   const { id } = useParams();
@@ -23,7 +23,9 @@ export default function ItemDetailsPage({ recipes }) {
       <p>Calorías: {recipe.calories}</p>
       <img src={recipe.image} alt={recipe.name} />
       <p>Porciones: {recipe.servings}</p>
-      <button>Editar Receta</button>
+      <Link to={`/update-recipe/${recipe.id}`}>
+      <button>Update</button>
+      </Link>
     </div>
   );
 }

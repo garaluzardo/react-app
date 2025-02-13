@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import recipesData from "../../recipesData.json"
 
-export default function AddRecipeForm({onAddRecipe}) {
+export default function RecipeForm({onAddRecipe}) {
 
     const [name, setName] = useState("");
     const [calories, setCalories] = useState(0);
@@ -16,9 +16,6 @@ export default function AddRecipeForm({onAddRecipe}) {
         e.preventDefault();
 
         const newRecipe = {
-
-            /*cada nueva receta tiene que tener un id unico como en el json???? */
-            id: Date.now(),  // Asignamos un ID único basado en el timestamp
             name,
             calories,
             image,
