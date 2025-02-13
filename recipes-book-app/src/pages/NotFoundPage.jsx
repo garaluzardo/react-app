@@ -7,7 +7,9 @@ export default function NotFoundPage() {
         <div className="not-found-page">
             <h1>404</h1>
             {/* <img> aqui va un meme </img> */}
-            <Link to="/">retorno a HomePage</Link>
+            <button>
+                <Link to="/">Back</Link>
+            </button>
         </div>
     )
 }

@@ -12,22 +12,30 @@ export default function AboutPage() {
             <div className="gara-details">
                 
                 <img className="profile-picture" src={GaraProfile} alt="Profile picture" />
-                <p>Gara</p>
+                <p>Gara Luzardo</p>
+
+                <a href="https://github.com/tu_usuario" target="_blank" rel="noopener noreferrer" >
                 <img src={GHLogo} alt="GitHub" />
-                <img src={LDNLogo} alt="LinkedIn" /> 
-                <a href="">
-                <p></p>
                 </a>
+
+                <a>
+                <img src={LDNLogo} alt="LinkedIn" /> 
+                </a>
+                
             </div>
 
             <div className='aytha-details'>
                 <img className="profile-picture" src={AythaProfile} alt="Profile picture" />
-                <p>Aytha</p>
+                <p>Aythamy Peinado</p>
+
+                <a href="https://github.com/tu_usuario" target="_blank" rel="noopener noreferrer" >
                 <img src={GHLogo} alt="GitHub" />
-                <img src={LDNLogo} alt="LinkedIn" /> 
-                <a href="">
-                <p></p>
                 </a>
+
+                <a>
+                <img src={LDNLogo} alt="LinkedIn" /> 
+                </a>
+                
             </div>
         </div>
     );

@@ -14,7 +14,7 @@ export default function ItemDetailsPage({ recipes }) {
   }, [id, recipes]); // Dependemos de 'id' y 'recipes' para obtener la receta correcta
 
   if (!recipe) {
-    return <h2>Receta no encontrada</h2>;
+    return <h2 className="not-found">Receta no encontrada</h2>;
   }
 
   return (
@@ -30,5 +30,3 @@ export default function ItemDetailsPage({ recipes }) {
     </div>
   );
 }
-
-

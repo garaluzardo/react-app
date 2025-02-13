@@ -17,6 +17,7 @@ body, html {
   overflow-y: auto; 
 }
 
+/*NAVBAR*/
 .navbar {
   height: 80px;
   background: #fff;
@@ -50,6 +51,7 @@ body, html {
  font-size: 1.7rem;
 }
 
+/*SIDEBAR*/
 .sidebar {
   width: 250px;
   background: #f4f4f4;
@@ -57,19 +59,35 @@ body, html {
   top: 80px; 
   bottom: 60px; 
   overflow-y: auto; 
+  padding-top: 10px; 
 }
+
 
 .sidebar ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 .sidebar ul li a {
   display: block;
-  padding: 10px;
+  padding: 15px;
   text-decoration: none;
   color: #333;
+  transition: background-color 0.3s, transform 0.3s ease, color 0.3s; /* Transición suave */
+  border-radius: 4px;
 }
 
+.sidebar ul li a:hover {
+  background-color: #828282; 
+  color: white; 
+  transform: scale(1.05);
+}
+
+.sidebar ul li a:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
 
 .content {
   flex: 1; 
@@ -78,7 +96,7 @@ body, html {
   overflow-y: auto;
 }
 
-
+/*FOOTER*/
 .footer {
   height: 60px;
   background: white;
@@ -103,6 +121,7 @@ footer img:hover {
   opacity: 0.8; 
 }
 
+/*COMPONENTS*/
 .recipes-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
@@ -129,7 +148,6 @@ footer img:hover {
   object-fit: cover; 
 }
 
-
 .recipes-card h3 {
   padding: 10px;
   font-size: 1.2em;
@@ -152,4 +170,229 @@ footer img:hover {
 
 .recipes-card button:hover {
   background-color: #a3352b; 
+}
+
+/*FORMS*/
+.add-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-form span {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.add-form label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.add-form input[type="text"],
+.add-form input[type="url"],
+.add-form input[type="number"],
+.add-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.add-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.add-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #6b9c6c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.add-form button:hover {
+  background-color: #4f6b55;
+}
+
+
+.add-form input::placeholder,
+.add-form textarea::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+/*FORM > IMPUTS */
+.add-form input:focus,
+.add-form textarea:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.update-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.update-form span {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.update-form label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.update-form input[type="text"],
+.update-form input[type="url"],
+.update-form input[type="number"],
+.update-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.update-form textarea {
+  height: 150px; 
+  resize: vertical; 
+}
+
+.update-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #6b9c6c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.update-form button:hover {
+  background-color: #4f6b55;
+}
+
+.update-form input::placeholder,
+.update-form textarea::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.update-form input:focus,
+.update-form textarea:focus {
+  border-color: #66afe9;
+  outline: none;
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+/*PAGES*/
+.item-details-page {
+  white-space: pre-line;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item-details-page img{
+  max-width: 50%;
+  height: auto;
+}
+
+.item-details-page p{
+  max-width: 50%;
+}
+
+.item-details-page button {
+  padding: 10px;
+  border: none;
+  background-color: #ef745e;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.about-page {
+  display: flex;               
+  justify-content: center;     
+  align-items: center;     
+  height: 100vh;        
+  gap: 50px;                    
+}
+
+.gara-details, .aytha-details {
+  display: flex;   
+  flex-direction: column;     
+  justify-content: center;  
+  align-items: center;        
+  text-align: center;        
+  padding: 20px;                 
+  background-color: #e7e1e1;     
+  border-radius: 8px;             
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* EL 0.1 es para suavizar la sombra */
+  width: 500px;                  
+  height: 350px; 
+}
+
+.gara-details img.profile-picture, .aytha-details img.profile-picture  {
+  width: 300px;         
+  height: 300px;
+  border: solid 11px;
+  border-color: white;
+  border-radius: 50%;      
+  object-fit: cover;         
+  margin-bottom: 15px;
+  margin-top: -250px;     
+}
+
+.gara-details img, .aytha-details img {
+  width: 25px;            
+  height: auto;
+  margin: 5px;   
+}
+
+a {
+  text-decoration: none;  
+  color: inherit;  
+}
+
+a p {
+  margin-top: 10px;         
+  font-size: 16px;               
 }

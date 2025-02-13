@@ -82,7 +82,7 @@ export default function UpdateRecipeForm({ recipes, onUpdateRecipe }) {
             <textarea
               name="instructions"
               type="text"
-              placeholder="Write more info "
+              placeholder="Instructions"
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
             />
